@@ -131,7 +131,7 @@ class HTTPClient(object):
             content = urllib.parse.urlencode(args)
             content_length = len(content)
 
-        request = "POST " + path + " HTTP/1.1\r\nHost: " + host + "\r\nContent-Length: " + str(content_length) + "\r\nContent-Type: application/x-www-form-urlencoded\r\n\r\n" + content + "\r\n"
+        request = "POST " + path + " HTTP/1.1\r\nHost: " + host + "\r\nContent-Length: " + str(content_length) + "\r\nContent-Type: application/x-www-form-urlencoded\r\n\r\n" + content + "\r\nConnection: close\r\n\r\n"
         self.sendall(request)
 
         data = self.recvall(sock)
